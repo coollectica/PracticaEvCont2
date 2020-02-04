@@ -11,4 +11,5 @@ activitat 2
 1. LISTA OL
 1. LISTA OL
 
-[ENLACE A](HTTP://URL_ARCHIVO.COM)
+[Archivo JS TinySlider](
+https://raw.githubusercontent.com/ganlanyuan/tiny-slider/master/dist/tiny-slider.js)
