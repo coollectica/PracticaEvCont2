@@ -141,10 +141,11 @@ autoplayUserPaused = false;
 }
 }
 
-//2.3 Dato ARRAY
-//En este caso asignamos 'touchstart', 'touchmove' a una nueva variable "option". Este es el dato array
-// https://developer.mozilla.org/en-US/docs/Glossary/array
-//Linia 427 a 431
+/* 2.3 Fragment de codi on aparegui el tipus de dada array.
+Lineas desde 427 a 431. El objeto array aparece en la linea 429 "['touchstart', 'touchmove']"
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+https://classroom.google.com/c/NDAzNzUyNDk0NTRa/m/NjAxNDUzNzAxODRa/details */
+
 
 function addEvents(el, obj, preventScrolling) {
 for (var prop in obj) {
