@@ -213,18 +213,30 @@ if (isOut) { slideItemsOut.push(item); }
 }
 }
 
-/* Cas 3.2: fragment concatenació,
-línies de la 278 a 285.
-La funció s'associa a l'esdeveniment a la la línia
-283 amb + */
+/*Caso 3.2: Fragmento de código donde aparezca la operación de concatenación
+de strings.
 
-var addClass = classListSupport ?
-function (el, str) {
-if (!hasClass(el, str)) { el.classList.add(str); }
-} :
-function (el, str) {
-if (!hasClass(el, str)) { el.className += ' ' + str; }
-};
+Vemos el ejemplo de concatenación de string en la línea 127 a la 128.
+Tenemos la variable vals donde visualizamos las tres concatenaciones "['calc' + str, '-moz-calc' + str, '-webkit-calc' + str],"
+
+En el fragmento de codigo entre las lineas 126 hasta la 138, 
+
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/concat
+*/
+
+try {
+    var str = '(10px * 10)',
+        vals = ['calc' + str, '-moz-calc' + str, '-webkit-calc' + str],
+        val;
+    for (var i = 0; i < 3; i++) {
+      val = vals[i];
+      div.style.width = val;
+      if (div.offsetWidth === 100) { 
+        result = val.replace(str, ''); 
+        break;
+      }
+    }
+  } catch (e) {}
 
 /* Cas 3.3: fragment lógica OR,
 línies de la 26 a 30.
