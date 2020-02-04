@@ -18,20 +18,33 @@ https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/if...
     style.appendChild(doc.createTextNode(rule));
   }
 
-/*Cas 1.3: Fragment de codi on aparegui la sentència iterativa for i on
-es faci servir una variable per a iterar.
-Linea 434 a 439
-L'event que executa la iteració for apareix a la linia 435 amb la variable.
+/*Cas 1.3: Fragment de codi on aparegui la sentència iterativa for i on es faci servir una variable per a iterar.
+Linea 38 a 58
+La sentencia que executa la iteració for apareix a la linia 44 amb la variable i que es crea a la linea 41 del codi 
 https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Bucles_e_iteraci%C3%B3n
  */ 
 
-function removeEvents(el, obj) {
-  for (var prop in obj) {
-    var option = ['touchstart', 'touchmove'].indexOf(prop) >= 0 ? passiveOption : false;
-    el.removeEventListener(prop, obj[prop], option);
-  }
-}
+function extend() {
+  var obj, name, copy,
+      target = arguments[0] || {},
+      i = 1,
+      length = arguments.length;
 
+  for (; i < length; i++) {
+    if ((obj = arguments[i]) !== null) {
+      for (name in obj) {
+        copy = obj[name];
+
+        if (target === copy) {
+          continue;
+        } else if (copy !== undefined) {
+          target[name] = copy;
+        }
+      }
+    }
+  }
+  return target;
+} 
 /*Cas 1.4: Fragment de codi on aparegui la sentència iterativa for...in.
 Linea 652 a 663
 L'event que executa la iteració for apareix a la linia 653
