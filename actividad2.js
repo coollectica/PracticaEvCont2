@@ -316,22 +316,16 @@ el.addEventListener(prop, obj[prop], option);
 }
 }
 
-/* 4.1: Fragmento de código donde aparezca el
-acceso a una propiedad de un objeto.
+/* 4.1: Fragmento de código donde aparezca el acceso a una propiedad de un objeto.
+        Aqui estamos accediendo (linea 50) a la propiedad tndId del objeto Window, y además le estamos asignando un valor
+        LINEA 49-54        
 */
-//LINEA 545-554
-//Tenemos el objeto KEYS y vemos sus propiedades, enter, space, left y right.
-
-var doc = document,
-win = window,
-KEYS = {
-ENTER: 13,
-SPACE: 32,
-LEFT: 37,
-RIGHT: 39
-},
-tnsStorage = {},
-localStorageAccess = options.useLocalStorage;
+function getSlideId() {
+  var id = window.tnsId;
+  window.tnsId = !id ? 1 : id + 1;
+  
+  return 'tns' + window.tnsId;
+}
 
 //4.2 Acceso a una posición de un array
 //En este objeto, en la linea 790, accedemos a la posición "touchmove" del array, para asignarle la cualidad descrita al "touchEvents"
