@@ -252,10 +252,12 @@ try {
     }
   } catch (e) {}
 
-/* Cas 3.3: fragment lógica OR,
-línies de la 26 a 30.
-La funció s'associa a l'esdeveniment a les línies
-27,28,29 i 30 amb || */
+/* Cas 3.3: Fragment de codi on aparegui l'operació lógica OR,
+                  Línies de la 26 a 30.
+                  La funció s'associa a l'esdeveniment a les línies
+                  27,28,29 i 30 amb || 
+
+https://developer.mozilla.org/enUS/docs/Web/JavaScript/Reference/Operators/Logical_Operators */
 
 var raf = win.requestAnimationFrame
 || win.webkitRequestAnimationFrame
