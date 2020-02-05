@@ -471,12 +471,11 @@ removeClass(slideItems[slideCountNew - i - 1], str);
 }
 
 
-/* 6.4 Fragmento de código donde se modifique la página web (documento
-HTML) añadiendo una etiqueta (element) */
+ /* 6.4 Fragmento de código donde se modifique la página web (documento HTML) añadiendo una etiqueta (element) */
+// LÍNEA 971-978
+//Se crea una variable div. A esta variable se le asigna un div creado dentro del doc, en la linea 972.
+//(Por lo tanto estamos modificando la pagina web, añadiendo un nuevo elemento div.
 
-// LÍNEA 971-977
-
-//Se ha creado un elemento div en una variable div
 function getClientWidth (el) {
 var div = doc.createElement('div'), rect, width;
 el.appendChild(div);
