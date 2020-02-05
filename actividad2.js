@@ -429,13 +429,17 @@ window.addEventListener("test", null, opts);
   
 /* 6.1: Fragmento de código donde se modifique la página web (documento
 HTML) cambiando una propiedad de una etiqueta (element) */
+// LÍNEA 2434-2440
+// El cambio de la propiedad aparece en la línea 2438 con el la función setAttribute.
 
-// LÍNEA 1475-1477
-//Cambiamos la propiedad de .tns-nav
 
-navContainer = outerWrapper.querySelector('.tns-nav');
-navItems = navContainer.children;
-}
+ function disEnableElement (isButton, el, val) {
+    if (isButton) {
+      el.disabled = val;
+    } else {
+      el.setAttribute('aria-disabled', val.toString());
+    }
+  }
 
 
 /* 6.2: Fragmento de código donde se modifique la página web (document
