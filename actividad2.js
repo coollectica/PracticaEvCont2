@@ -444,39 +444,42 @@ navContainer = outerWrapper.querySelector('.tns-nav');
 navItems = navContainer.children;
 }
 
-
 /* 6.2: Fragmento de código donde se modifique la página web (document
-HTML) utilitzant un mètode de la propietat d'una etiqueta (element) */
-//LÍNEA 2815-2818
-//Cambiamos las propiedades de la etiqueta "autoplayButton" cambiando su contenido HTML interno utilizando el metodo "innerHtml". Ponemos nuevas propiedades dento de "accion" y "txt"
-function updateAutoplayButton (action, txt) {
-setAttrs(autoplayButton, {'data-action': action});
-autoplayButton.innerHTML = autoplayHtmlStrings[0] + action + autoplayHtmlStrings[1] + txt;
+        HTML) utilitzant un mètode de la propietat d'una etiqueta (element) 
+        LÍNEAS 2063-2074.
+        En la línea 2067 podemos ver un objeto de elemento HTML llamado "container" con una propiedad llamada "ClassName".
+        Se está utilizando un método "replace" para cambiar el valor de la propiedad del objeto "container".
+        He verificado que el creador del código creó este objeto y propiedad al comienzo de este documento de JavaScript.
+        Podemos ver la documentación de MDN de método "replace" en este enlace:
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace */
+
+function disableSlider () {
+  if (disabled) { return; }
+
+  sheet.disabled = true;
+  container.className = container.className.replace(newContainerClasses.substring(1), '');
+  removeAttrs(container, ['style']);
+  if (loop) {
+    for (var j = cloneCount; j--;) {
+      if (carousel) { hideElement(slideItems[j]); }
+      hideElement(slideItems[slideCountNew - j - 1]);
+    }
+  }
+
+/* 6.3 Fragmento de código donde se modifique la página web (documento HTML) eliminando una etiqueta (element). 
+       LÍNEAS 16-22. 
+       Se puede ver un ejemplo de eliminación del elemento HTML en la línea 16. 
+       El método 'removeChild' se usa para eliminar el nodo hijo del nodo padre ("parentNode.removeChild").
+       Podemos ver la documentación de MDN que explica usando de metoda "removeChild" en este enlace:
+       https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild */
+
+if(!("remove" in Element.prototype)){
+  Element.prototype.remove = function(){
+    if(this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
 }
-
-
-/* 6.3 Fragmento de código donde se modifique la página web
-(documento HTML) eliminando una etiqueta (element) */
-
-// LÍNEA 1906 -1911
-//https://developer.mozilla.org/es/docs/Web/API/Element/removeAttribute
-
-
-function unfreezeSlider() {
-if (!frozen) { return; }
-
-// Restaura el borde interno para navegadores modernos
-if (edgePadding && CSSMQ) { innerWrapper.style.margin = ''; }
-
-// Eliminar la clase tns-transparent para diapositivas clonadas //
-if (cloneCount) {
-var str = 'tns-transparent';
-for (var i = cloneCount; i--;) {
-if (carousel) { removeClass(slideItems[i], str); }
-removeClass(slideItems[slideCountNew - i - 1], str);
-}
-}
-
 
 /* 6.4 Fragmento de código donde se modifique la página web (documento
 HTML) añadiendo una etiqueta (element) */
