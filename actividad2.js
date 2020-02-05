@@ -438,15 +438,18 @@ navItems = navContainer.children;
 }
 
 
-/* 6.2: Fragmento de código donde se modifique la página web (document
-HTML) utilitzant un mètode de la propietat d'una etiqueta (element) */
-//LÍNEA 2815-2818
-//Cambiamos las propiedades de la etiqueta "autoplayButton" cambiando su contenido HTML interno utilizando el metodo "innerHtml". Ponemos nuevas propiedades dento de "accion" y "txt"
-function updateAutoplayButton (action, txt) {
-setAttrs(autoplayButton, {'data-action': action});
-autoplayButton.innerHTML = autoplayHtmlStrings[0] + action + autoplayHtmlStrings[1] + txt;
-}
+/* 6.2: Fragmento de código donde se modifique la página web (document HTML) utilitzant un
+         mètode de la propietat d'una etiqueta (element) 
+         Lineas de 2815-2818
+         https://developer.mozilla.org/es/docs/Web/API/Element/innerHTML
+        Cambiamos las propiedades de la etiqueta "autoplayButton" cambiando su contenido HTML
+         interno utilizando el metodo "innerHtml". Ponemos nuevas propiedades dento de "accion" y "txt" 
+*/
 
+function updateAutoplayButton (action, txt) {
+    setAttrs(autoplayButton, {'data-action': action});
+    autoplayButton.innerHTML = autoplayHtmlStrings[0] + action + autoplayHtmlStrings[1] + txt;
+}
 
 /* 6.3 Fragmento de código donde se modifique la página web
 (documento HTML) eliminando una etiqueta (element) */
