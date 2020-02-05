@@ -428,9 +428,10 @@ window.addEventListener("test", null, opts);
 }
   
 /* 6.1: Fragmento de código donde se modifique la página web (documento
-HTML) cambiando una propiedad de una etiqueta (element) */
-// LÍNEA 2434-2440
-// El cambio de la propiedad aparece en la línea 2438 con el la función setAttribute.
+        HTML) cambiando una propiedad de una etiqueta (element) */
+//      LÍNEA 2434-2440
+//      El cambio de la propiedad aparece en la línea 2438 con el la función setAttribute.
+//      https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
 
 
  function disEnableElement (isButton, el, val) {
