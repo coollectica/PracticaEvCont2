@@ -219,11 +219,9 @@ RIGHT: 39
 /*Caso 3.2: Fragmento de código donde aparezca la operación de concatenación
 de strings.
 
-Vemos el ejemplo de concatenación de string en la línea 127 a la 128.
-Tenemos la variable vals donde visualizamos las tres concatenaciones "['calc' + str, '-moz-calc' + str, '-webkit-calc' + str],"
-
-En el fragmento de codigo entre las lineas 126 hasta la 138, 
-
+Línea 104-116.
+Tenemos la variable 'vals' donde visualizamos las tres concatenaciones "['calc' + str, '-moz-calc' + str, '-webkit-calc' + str],"
+Se pueden ver dos operandos con un + de operador. Al ser una de ellas un string + actúa como el operador de la concatenación.
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/concat
 */
 
@@ -241,10 +239,11 @@ try {
     }
   } catch (e) {}
 
-/* Cas 3.3: fragment lógica OR,
-línies de la 26 a 30.
-La funció s'associa a l'esdeveniment a les línies
-27,28,29 i 30 amb || */
+/*Cas 3.3: Fragment de codi on aparegui l'operació lógica OR,
+Línies de la 26 a 30.
+La operación OR aparece en cada una de las lineas 27 a 30 amb el símbolo "||".
+https://developer.mozilla.org/enUS/docs/Web/JavaScript/Reference/Operators/Logical_Operators
+*/
 
 var raf = win.requestAnimationFrame
 || win.webkitRequestAnimationFrame
