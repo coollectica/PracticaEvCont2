@@ -85,6 +85,7 @@ function getSlideId() {
   window.tnsId = !id ? 1 : id + 1;
   
   return 'tns' + window.tnsId;
+
 }
 
 /*Cas 1.7: Fragment de codi on aparegui la sentència de captura
