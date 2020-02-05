@@ -203,29 +203,16 @@ LEFT: 37,
 RIGHT: 39
 }
   
-// 3.1 Operación suma
-//En este caso (linea 2534) crea una variable "1", cuyo valor es la concatenación de los valores de number y items
-// Linia 2533-2551
+// Cas 3.1: Fragment de codi on aparegui l'operació de suma.
+// Linia 987 a 901 (900)
+//Cuando tem es negativo, devuelve el valor de tem%slideCount más uno (valor numérico, por eso se trata de una suma y no concatenación)
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Aritm%C3%A9ticos
 
-function animateSlide (number, classOut, classIn, isOut) {
-var l = number + items;
-if (!loop) { l = Math.min(l, slideCountNew); }
-
-for (var i = number; i < l; i++) {
-var item = slideItems[i];
-
-// set item positions
-if (!isOut) { item.style.left = (i - index) * 100 / items + '%'; }
-
-if (animateDelay && TRANSITIONDELAY) {
-item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = animateDelay * (i - number) / 1000 + 's';
-}
-removeClass(item, classOut);
-addClass(item, classIn);
-
-if (isOut) { slideItemsOut.push(item); }
-}
-}
+  function getCurrentSlide () {
+    var tem = carousel ? index - cloneCount : index;
+    while (tem < 0) { tem += slideCount; }
+    return tem%slideCount + 1;
+  }
 
 /*Caso 3.2: Fragmento de código donde aparezca la operación de concatenación
 de strings.
