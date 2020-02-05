@@ -463,26 +463,19 @@ autoplayButton.innerHTML = autoplayHtmlStrings[0] + action + autoplayHtmlStrings
 }
 
 
-/* 6.3 Fragmento de código donde se modifique la página web
-(documento HTML) eliminando una etiqueta (element) */
-
-// LÍNEA 1906 -1911
-//https://developer.mozilla.org/es/docs/Web/API/Element/removeAttribute
-
-
-function unfreezeSlider() {
-if (!frozen) { return; }
-
-// Restaura el borde interno para navegadores modernos
-if (edgePadding && CSSMQ) { innerWrapper.style.margin = ''; }
-
-// Eliminar la clase tns-transparent para diapositivas clonadas //
-if (cloneCount) {
-var str = 'tns-transparent';
-for (var i = cloneCount; i--;) {
-if (carousel) { removeClass(slideItems[i], str); }
-removeClass(slideItems[slideCountNew - i - 1], str);
-}
+/* 6.3 Fragmento de código donde se modifique la página web (documento HTML) eliminando una etiqueta (element)
+       Se puede ver un ejemplo de eliminación del elemento HTML en la línea 15.
+       El  método 'removeChild' se usa para eliminar el nodo hijo del nodo padre ("parentNode.removeChild").
+       LÍNEAS 15-22
+       Podemos ver la documentación de MDN que explica la creación de var en este enlace:
+       https://developer.mozilla.org/es/docs/Web/API/Element/removeAttribute
+*/
+if(!("remove" in Element.prototype)){
+  Element.prototype.remove = function(){
+    if(this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
 }
 
 
