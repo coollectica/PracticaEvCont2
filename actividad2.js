@@ -342,7 +342,7 @@ function getSlideId() {
 
 /*Cas 4.2: Fragment de codi on aparegui l'accés a una posició d'un array.
 linea 2339-2343
-el acceso a la posición del array se produce en la linea 2343. En el slideItems[0], cuya posición tiene el índice 0.*/
+El array es slideItems y la posición accedida es la 0;  por eso se emplea la sintaxis array[posicion] quedando slideItems[0].*/
 
  function setSlidePositions () {
     slidePositions = [0];
