@@ -259,10 +259,18 @@ var raf = win.requestAnimationFrame
  if (*!carousel*) { updateOptions(options); }
 
 
-/* Cas 3.5 fragment asignació,
-La funció s'associa a l'esdeveniment a la la línia
-24 amb "=" */
+/* Caso 3.5: Fragmento de código donde aparezca la operación de asignación.*/
+//LÍNEA 24 a 30
+//En la línea 24 la sentencia var declara una variable "win" con "=" a "window"
+
 var win = window;
+
+var raf = win.requestAnimationFrame
+  || win.webkitRequestAnimationFrame
+  || win.mozRequestAnimationFrame
+  || win.msRequestAnimationFrame
+  || function(cb) { return setTimeout(cb, 16); };
+
 
 
 /* Cas 3.6: fragment autoincrementació,
