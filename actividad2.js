@@ -276,10 +276,11 @@ La funció s'associa a l'esdeveniment a la la línia
 var win = window;
 
 
-/* Cas 3.6: fragment autoincrementació,
-línies de la 330 a 336.
-La funció s'associa a l'esdeveniment a la línia
-332 amb ++ */
+/* 3.6: Fragment de codi on aparegui l'operació d'autoincrement.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Aritm%C3%A9ticos
+
+         Línies de la 330 a 336.
+         La funció s'associa a l'esdeveniment a la línia 332 amb ++ */
 
 function arrayFromNodeList (nl) {
 var arr = [];
