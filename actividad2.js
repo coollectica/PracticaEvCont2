@@ -233,7 +233,7 @@ de strings.
 Vemos el ejemplo de concatenación de string en la línea 127 a la 128.
 Tenemos la variable vals donde visualizamos las tres concatenaciones "['calc' + str, '-moz-calc' + str, '-webkit-calc' + str],"
 
-En el fragmento de codigo entre las lineas 126 hasta la 138, 
+En el fragmento de codigo entre las lineas 126 hasta la 138.
 
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/concat
 */
