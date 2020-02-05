@@ -277,10 +277,10 @@ var win = window;
 
 
 /* 3.6: Fragment de codi on aparegui l'operació d'autoincrement.
+   Línies de la 330 a 336.
+En la 332 encontramos el autoincremento, 'i++', el cual incrementa el valor de 'i' cuando 'l' es mayor que 'i'.
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Aritm%C3%A9ticos
-
-         Línies de la 330 a 336.
-         La funció s'associa a l'esdeveniment a la línia 332 amb ++ */
+ */
 
 function arrayFromNodeList (nl) {
 var arr = [];
