@@ -437,55 +437,42 @@ navContainer = outerWrapper.querySelector('.tns-nav');
 navItems = navContainer.children;
 }
 
+/* 6.2: Fragmento de código donde se modifique la página web (document
+        HTML) utilitzant un mètode de la propietat d'una etiqueta (element) 
+        LÍNEAS 2063-2074.
+        En la línea 2067 podemos ver un objeto de elemento HTML llamado "container" con una propiedad llamada "ClassName".
+        Se está utilizando un método "replace" para cambiar el valor de la propiedad del objeto "container".
+        He verificado que el creador del código creó este objeto y propiedad al comienzo de este documento de JavaScript.
+        Podemos ver la documentación de MDN de método "replace" en este enlace:
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace */
 
+function disableSlider () {
+  if (disabled) { return; }
 
-/* Solucion:
+  sheet.disabled = true;
+  container.className = container.className.replace(newContainerClasses.substring(1), '');
+  removeAttrs(container, ['style']);
+  if (loop) {
+    for (var j = cloneCount; j--;) {
+      if (carousel) { hideElement(slideItems[j]); }
+      hideElement(slideItems[slideCountNew - j - 1]);
+    }
+  }
 
-## 6.2: Fragmento de código donde se modifique la página web (document
-          HTML) utilitzant un mètode de la propietat d'una etiqueta (element) 
-           En la línea 1422 podemos ver nuevos elementos HTML que se agregan dentro (comando 
-           afterbegin') de un elemento HTML llamado "outerWrapper".
-           Además, dando otro ejemplo.
-           En la línea 97 podemos ver que la propiedad "fondo" del elemento "estilo" dentro del elemento 
-           HTML "cuerpo" se estaba cambiando a una propiedad que es un 'string' vacía "''".
-           LÍNEAS 1422-1423. Tambien LÍNEA 97.
-           Podemos ver la documentación de MDN que explica la creación de var en estas enlaces:
-           https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-           https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+/* 6.3 Fragmento de código donde se modifique la página web (documento HTML) eliminando una etiqueta (element). 
+       LÍNEAS 16-22. 
+       Se puede ver un ejemplo de eliminación del elemento HTML en la línea 16. 
+       El método 'removeChild' se usa para eliminar el nodo hijo del nodo padre ("parentNode.removeChild").
+       Podemos ver la documentación de MDN que explica usando de metoda "removeChild" en este enlace:
+       https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild */
 
-*/
-
-
-// LÍNEAS 1422-1423
-
-outerWrapper.insertAdjacentHTML('afterbegin', '<div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">' + getLiveRegionStr() + '</span>  of ' + slideCount + '</div>');
-    liveregionCurrent = outerWrapper.querySelector('.tns-liveregion .current');
-
-    
-// LÍNEA 97.
-
-body.style.background = '';
-
-
-
-/* Solucion: 
-
-##  6.3 Fragmento de código donde se modifique la página web (documento HTML) eliminando una etiqueta (element) 
-       Se puede ver un ejemplo de eliminación del elemento HTML en la línea 15. 
-       El método 'removeChild' se usa para eliminar el nodo hijo del nodo padre 
-       ("parentNode.removeChild").
-       LÍNEAS 15-22
-       Podemos ver la documentación de MDN que explica la creación de var en este enlace:
-       https://developer.mozilla.org/es/docs/Web/API/Element/removeAttribute*/
-
- if(!("remove" in Element.prototype)){ 
- Element.prototype.remove = function(){ 
-     if(this.parentNode) { 
-       this.parentNode.removeChild(this); 
-    } 
-  }; 
- } 
-
+if(!("remove" in Element.prototype)){
+  Element.prototype.remove = function(){
+    if(this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
+}
 
 /* 6.4 Fragmento de código donde se modifique la página web (documento
 HTML) añadiendo una etiqueta (element) */
