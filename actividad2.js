@@ -389,7 +389,7 @@ lenguaje, como por ejemplo Math, Date, Object, Array
 LINEA 556 - 583
 En la línea 559 tenemos la variable "uid" que tiene asignada "new Date" para poder trabajar con fechas y horas.
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales
-https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date 
 */
 
 if (localStorageAccess) {
