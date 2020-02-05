@@ -438,37 +438,53 @@ navItems = navContainer.children;
 }
 
 
-/* 6.2: Fragmento de código donde se modifique la página web (document
-HTML) utilitzant un mètode de la propietat d'una etiqueta (element) */
-//LÍNEA 2815-2818
-//Cambiamos las propiedades de la etiqueta "autoplayButton" cambiando su contenido HTML interno utilizando el metodo "innerHtml". Ponemos nuevas propiedades dento de "accion" y "txt"
-function updateAutoplayButton (action, txt) {
-setAttrs(autoplayButton, {'data-action': action});
-autoplayButton.innerHTML = autoplayHtmlStrings[0] + action + autoplayHtmlStrings[1] + txt;
-}
+
+/* Solucion:
+
+## 6.2: Fragmento de código donde se modifique la página web (document
+          HTML) utilitzant un mètode de la propietat d'una etiqueta (element) 
+           En la línea 1422 podemos ver nuevos elementos HTML que se agregan dentro (comando 
+           afterbegin') de un elemento HTML llamado "outerWrapper".
+           Además, dando otro ejemplo.
+           En la línea 97 podemos ver que la propiedad "fondo" del elemento "estilo" dentro del elemento 
+           HTML "cuerpo" se estaba cambiando a una propiedad que es un 'string' vacía "''".
+           LÍNEAS 1422-1423. Tambien LÍNEA 97.
+           Podemos ver la documentación de MDN que explica la creación de var en estas enlaces:
+           https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+           https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+
+*/
 
 
-/* 6.3 Fragmento de código donde se modifique la página web
-(documento HTML) eliminando una etiqueta (element) */
+// LÍNEAS 1422-1423
 
-// LÍNEA 1906 -1911
-//https://developer.mozilla.org/es/docs/Web/API/Element/removeAttribute
+outerWrapper.insertAdjacentHTML('afterbegin', '<div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">' + getLiveRegionStr() + '</span>  of ' + slideCount + '</div>');
+    liveregionCurrent = outerWrapper.querySelector('.tns-liveregion .current');
+
+    
+// LÍNEA 97.
+
+body.style.background = '';
 
 
-function unfreezeSlider() {
-if (!frozen) { return; }
 
-// Restaura el borde interno para navegadores modernos
-if (edgePadding && CSSMQ) { innerWrapper.style.margin = ''; }
+/* Solucion: 
 
-// Eliminar la clase tns-transparent para diapositivas clonadas //
-if (cloneCount) {
-var str = 'tns-transparent';
-for (var i = cloneCount; i--;) {
-if (carousel) { removeClass(slideItems[i], str); }
-removeClass(slideItems[slideCountNew - i - 1], str);
-}
-}
+##  6.3 Fragmento de código donde se modifique la página web (documento HTML) eliminando una etiqueta (element) 
+       Se puede ver un ejemplo de eliminación del elemento HTML en la línea 15. 
+       El método 'removeChild' se usa para eliminar el nodo hijo del nodo padre 
+       ("parentNode.removeChild").
+       LÍNEAS 15-22
+       Podemos ver la documentación de MDN que explica la creación de var en este enlace:
+       https://developer.mozilla.org/es/docs/Web/API/Element/removeAttribute*/
+
+ if(!("remove" in Element.prototype)){ 
+ Element.prototype.remove = function(){ 
+     if(this.parentNode) { 
+       this.parentNode.removeChild(this); 
+    } 
+  }; 
+ } 
 
 
 /* 6.4 Fragmento de código donde se modifique la página web (documento
