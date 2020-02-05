@@ -278,17 +278,35 @@ arr.push(nl[i]);
 return arr;
 }
 
-/* Cas 3.7: fragment ternaria,
-línies de la 375 a 386.
-La funció s'associa a l'esdeveniment a la línia
-384 amb ? */
+/* Cas 3.7: Fragment de codi on aparegui l'operació ternaria.
+Línies de la 375 a 397
+Las ternarias usan la sintaxis `condición ? expr1 : expr2 `
+La operación ternaria aparece en la linea 394: donde la si la condición `body.fake` es true se cumple la expresión `resetFakeBody(body, docOverflow)`, de lo contrario se cumple `el.remove()`.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator  */
 
-var doc = document,
-body = getBody(),
-docOverflow = setFakeBody(body),
-el = doc.createElement('p'),
-has3d,
-cssTF = tf.length > 9 ? '-' + tf.slice(0, -9).toLowerCase() + '-' : '';
+function has3DTransforms(tf){
+  if (!tf) { return false; }
+  if (!window.getComputedStyle) { return false; }
+  
+  var doc = document,
+      body = getBody(),
+      docOverflow = setFakeBody(body),
+      el = doc.createElement('p'),
+      has3d,
+      cssTF = tf.length > 9 ? '-' + tf.slice(0, -9).toLowerCase() + '-' : '';
+
+  cssTF += 'transform';
+
+  // Add it to the body to get the computed style
+  body.insertBefore(el, null);
+
+  el.style[tf] = 'translate3d(1px,1px,1px)';
+  has3d = window.getComputedStyle(el).getPropertyValue(cssTF);
+
+  body.fake ? resetFakeBody(body, docOverflow) : el.remove();
+
+  return (has3d !== undefined && has3d.length > 0 && has3d !== "none");
+}
 
 
 /* Cas 3.8: fragment operació "major o igual que"
