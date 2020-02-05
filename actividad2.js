@@ -387,11 +387,9 @@ removeClass(el, 'tns-moving');
 /*Caso 5.1: Fragmento de código donde aparezca el uso de un objeto global del
 lenguaje, como por ejemplo Math, Date, Object, Array
 LINEA 556 - 583
-
-En la línea 559 tenemos la variable "uid" que tiene asignada "new Date" para poder acceder a los datos almacenados de "fecha y hora".
-
-http://xguaita.github.io/mtig-js/modulo3/
-https://developer.mozilla.org/es/docs/Web/JavaScript/Introducci%C3%B3n_a_JavaScript_orientado_a_objetos
+En la línea 559 tenemos la variable "uid" que tiene asignada "new Date" para poder trabajar con fechas y horas.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date
 */
 
 if (localStorageAccess) {
