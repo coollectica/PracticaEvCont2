@@ -289,10 +289,10 @@ arr.push(nl[i]);
 return arr;
 }
 
-/* Cas 3.7: fragment ternaria,
-línies de la 375 a 386.
-La funció s'associa a l'esdeveniment a la línia
-384 amb ? */
+/* Cas 3.7: Fragment de codi on aparegui l'operació ternaria.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator 
+      Línies de la 375 a 386.
+      La funció s'associa a l'esdeveniment a la línia 384 amb ? */
 
 var doc = document,
 body = getBody(),
