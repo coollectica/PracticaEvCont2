@@ -75,16 +75,18 @@ https://developer.mozilla.org/en-US/docs/Glossary/Function
     return el.nodeName.toLowerCase();
   }
 
-/*Cas 1.6: Fragment de codi on aparegui la sentència de retorn d'un
-resultat emprant l'operador return.
-Linea 2422 a 2424
-L'element return apareix a la linia 2423
+/*Cas 1.6: Fragment de codi on aparegui la sentència de retorn d'un resultat emprant l'operador return.
+Linea 71 a 76. L'operador return amb la sentencia return, apareixen a la linia 75.
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/return
  */ 
 
- function getLowerCaseNodeName (el) {
-    return el.nodeName.toLowerCase();
-  }
+function getSlideId() {
+  var id = window.tnsId;
+  window.tnsId = !id ? 1 : id + 1;
+  
+  return 'tns' + window.tnsId;
+
+}
 
 /*Cas 1.7: Fragment de codi on aparegui la sentència de captura
 d'errors try acompanyada del bloc catch.
