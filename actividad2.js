@@ -384,35 +384,44 @@ removeClass(el, 'tns-moving');
 }, 300);
 }
 
-//5.1 Us de Objeto Global del lenguaje
-//En la fila 559, creamos la variable "uid" para asignarle la hora y fecha de hoy según la hora local.
-//Filas 556-583
+/*Caso 5.1: Fragmento de código donde aparezca el uso de un objeto global del
+lenguaje, como por ejemplo Math, Date, Object, Array
+LINEA 556 - 583
+
+En la línea 559 tenemos la variable "uid" que tiene asignada "new Date" para poder acceder a los datos almacenados de "fecha y hora".
+
+http://xguaita.github.io/mtig-js/modulo3/
+https://developer.mozilla.org/es/docs/Web/JavaScript/Introducci%C3%B3n_a_JavaScript_orientado_a_objetos
+*/
 
 if (localStorageAccess) {
-var browserInfo = navigator.userAgent;
-var uid = new Date;
+    // check browser version and local storage access
+    var browserInfo = navigator.userAgent;
+    var uid = new Date;
 
-try {
-tnsStorage = win.localStorage;
-if (tnsStorage) {
-tnsStorage.setItem(uid, uid);
-localStorageAccess = tnsStorage.getItem(uid) == uid;
-tnsStorage.removeItem(uid);
-} else {
-localStorageAccess = false;
-}
-if (!localStorageAccess) { tnsStorage = {}; }
-} catch(e) {
-localStorageAccess = false;
-}
+    try {
+      tnsStorage = win.localStorage;
+      if (tnsStorage) {
+        tnsStorage.setItem(uid, uid);
+        localStorageAccess = tnsStorage.getItem(uid) == uid;
+        tnsStorage.removeItem(uid);
+      } else {
+        localStorageAccess = false;
+      }
+      if (!localStorageAccess) { tnsStorage = {}; }
+    } catch(e) {
+      localStorageAccess = false;
+    }
 
-if (localStorageAccess) {
-if (tnsStorage['tnsApp'] && tnsStorage['tnsApp'] !== browserInfo) {
-['tC', 'tPL', 'tMQ', 'tTf', 't3D', 'tTDu', 'tTDe', 'tADu', 'tADe', 'tTE', 'tAE'].forEach(function(item) { tnsStorage.removeItem(item); });
-}
-localStorage['tnsApp'] = browserInfo;
-}
-}
+    if (localStorageAccess) {
+      // remove storage when browser version changes
+      if (tnsStorage['tnsApp'] && tnsStorage['tnsApp'] !== browserInfo) {
+        ['tC', 'tPL', 'tMQ', 'tTf', 't3D', 'tTDu', 'tTDe', 'tADu', 'tADe', 'tTE', 'tAE'].forEach(function(item) { tnsStorage.removeItem(item); });
+      }
+      // update browserInfo
+      localStorage['tnsApp'] = browserInfo;
+    }
+  }
 
 //5.2 Uso objeto que representa la pestaña del navegador
 //registra un evento a la ventana del navegador (window). El evento a escuchar es "test".
