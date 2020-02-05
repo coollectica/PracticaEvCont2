@@ -340,9 +340,9 @@ function getSlideId() {
   return 'tns' + window.tnsId;
 }
 
-//4.2 Acceso a una posición de un array
+/*Cas 4.2: Fragment de codi on aparegui l'accés a una posició d'un array.
 linea 2339-2343
-el acceso a la posición del array se produce en la linea 2343. En el slideItems[0].
+el acceso a la posición del array se produce en la linea 2343. En el slideItems[0], cuya posición tiene el índice 0.*/
 
  function setSlidePositions () {
     slidePositions = [0];
