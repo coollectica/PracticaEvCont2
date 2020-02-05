@@ -318,16 +318,16 @@ cssTF = tf.length > 9 ? '-' + tf.slice(0, -9).toLowerCase() + '-' : '';
 
 
 /* Cas 3.8: fragment operació "major o igual que"
-línies de la 427 a 432.
-La funció s'associa a l'esdeveniment a la la línia
-429 amb >= */
+Línies de la 1943 a 1949.
+La funció apareix a la línia 1946 amb l'element ">=" dins d'un condicional if  */
 
-function addEvents(el, obj, preventScrolling) {
-for (var prop in obj) {
-var option = ['touchstart', 'touchmove'].indexOf(prop) >= 0 && !preventScrolling ? passiveOption : false;
-el.addEventListener(prop, obj[prop], option);
-}
-}
+  function setBreakpointZone () {
+    breakpointZone = 0;
+    for (var bp in responsive) {
+      bp = parseInt(bp); // convert string to number
+      if (windowWidth >= bp) { breakpointZone = bp; }
+    }
+  }
 
 /* 4.1: Fragmento de código donde aparezca el acceso a una propiedad de un objeto.
         Aqui estamos accediendo (linea 50) a la propiedad tndId del objeto Window, y además le estamos asignando un valor
