@@ -263,27 +263,12 @@ var raf = win.requestAnimationFrame
 || win.msRequestAnimationFrame
 || function(cb) { return setTimeout(cb, 16); };
   
-/*Caso 3.4: Fragmento de código donde aparezca la
-operación lògica de negación.*/
+// Caso 3.4: Fragmento de código donde aparezca la operación lògica de negación.
+// Linea 664, se expresa negación con el símbolo ! y la expresión dentro de un condicional
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Operadores_l%C3%B3gicos
 
-//LINEA 1652- 1665
-// su negaciónón devuelve false
-// https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=795:operadores-logicos-javascript-relacionales-igual-distinto-and-or-not-prioridades-ejemplos-cu01117e&catid=78&Itemid=206
+ if (*!carousel*) { updateOptions(options); }
 
-  function resizeTasks (e) {
-    if (!isOn) { return; }
-    if (nested === 'outer') { events.emit('outerResized', info(e)); }
-    windowWidth = getWindowWidth();
-    var bpChanged,
-        breakpointZoneTem = breakpointZone,
-        needContainerTransform = false;
-
-    if (responsive) {
-      setBreakpointZone();
-      bpChanged = breakpointZoneTem !== breakpointZone;
-      // if (hasRightDeadZone) { needContainerTransform = true; } // *?
-      if (bpChanged) { events.emit('newBreakpointStart', info(e)); }
-    }
 
 /* Cas 3.5 fragment asignació,
 La funció s'associa a l'esdeveniment a la la línia
