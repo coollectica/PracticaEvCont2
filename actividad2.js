@@ -333,17 +333,29 @@ function getSlideId() {
   return 'tns' + window.tnsId;
 }
 
-//4.2 Acceso a una posición de un array
-//En este objeto, en la linea 790, accedemos a la posición "touchmove" del array, para asignarle la cualidad descrita al "touchEvents"
-//Linias 788-793
+/* 4.2 Fragmento de código donde aparezca el acceso a una posición de un array.
+LÍNEAS 2325-2337.
+En linea 2329 podemos ver el array "slideItems" y la posición accedida es la 0;  por eso se 
+emplea la sintaxis 'array[posicion]'  quedando "slideItems[0]".
+Podemos ver la documentación de MDN de objeto "array" en estas enlaces:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array      
+https://classroom.google.com/u/0/c/NDAzNzUyNDk0NTRa/m/NjAxNDUzNzAxODRa/details */
 
-touchEvents = {
-'touchstart': onPanStart,
-'touchmove': onPanMove,
-'touchend': onPanEnd,
-'touchcancel': onPanEnd
+function setSlidePositions () {
+  slidePositions = [0];
+  var attr = horizontal ? 'left' : 'top',
+      attr2 = horizontal ? 'right' : 'bottom',
+      base = slideItems[0].getBoundingClientRect()[attr];
+
+  forEach(slideItems, function(item, i) {
+    // skip the first slide
+    if (i) { slidePositions.push(item.getBoundingClientRect()[attr] - base); }
+    // add the end edge
+    if (i === slideCountNew - 1) { slidePositions.push(item.getBoundingClientRect()[attr2] - base); }
+  });
 }
-  
+
+
 //4.3 Acceso a un elemento del DOM
 //Em la linea 220 tenemos un "querySelector", el cual devuelve el primer elemento "head" de Document
 //Lineas 206 a 223
