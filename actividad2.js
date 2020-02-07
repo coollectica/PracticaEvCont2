@@ -340,26 +340,27 @@ function getSlideId() {
   return 'tns' + window.tnsId;
 }
 
-//4.2 Fragmento de código donde aparezca el acceso a una posición de un array.
-   /* LÍNEAS 330-336.
-      En la línea 330 podemos ver la creación de la función con el parámetro "nl" que pretende crear una lista de nodos ("array-like") de algún objeto.
-      En la línea 331 podemos ver la creación de una "array" vacía llamada "arr".
-      En la línea 332 podemos ver el uso de la declaración "for" que crea un bucle que recorre la lista de nodos adquiridos.
-      Luego se accede a la "array" "arr" y se inserta la lista de nodos adquiridos dentro.
-      En la línea 335, la declaración "return" finaliza la función y devuelve los valores de la array "arr".
-      Podemos ver la documentación de MDN de objeto "array" y declaracion "for" en estas enlaces:
-      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array      
-      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for 
-      https://classroom.google.com/u/0/c/NDAzNzUyNDk0NTRa/m/NjAxNDI5MTM4OTha/details
-      https://classroom.google.com/u/0/c/NDAzNzUyNDk0NTRa/m/NjAxNDUzNzAxODRa/details */
+/* 4.2 Fragmento de código donde aparezca el acceso a una posición de un array.
+LÍNEAS 2325-2337.
+En linea 2329 podemos ver el array "slideItems" y la posición accedida es la 0;  por eso se 
+emplea la sintaxis 'array[posicion]'  quedando "slideItems[0]".
+Podemos ver la documentación de MDN de objeto "array" en estas enlaces:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array      
+https://classroom.google.com/u/0/c/NDAzNzUyNDk0NTRa/m/NjAxNDUzNzAxODRa/details */
 
-      function arrayFromNodeList (nl) {
-          var arr = [];
-          for (var i = 0, l = nl.length; i < l; i++) {
-             arr.push(nl[i]);
-          }
-          return arr;
-      }
+function setSlidePositions () {
+  slidePositions = [0];
+  var attr = horizontal ? 'left' : 'top',
+      attr2 = horizontal ? 'right' : 'bottom',
+      base = slideItems[0].getBoundingClientRect()[attr];
+
+  forEach(slideItems, function(item, i) {
+    // skip the first slide
+    if (i) { slidePositions.push(item.getBoundingClientRect()[attr] - base); }
+    // add the end edge
+    if (i === slideCountNew - 1) { slidePositions.push(item.getBoundingClientRect()[attr2] - base); }
+  });
+}
 
 
 //4.3 Acceso a un elemento del DOM
