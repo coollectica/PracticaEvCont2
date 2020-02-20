@@ -260,8 +260,8 @@ var raf = win.requestAnimationFrame
 
 
 /* Caso 3.5: Fragmento de código donde aparezca la operación de asignación.*/
-//LÍNEA 24 a 30
-//En la línea 24 la sentencia var declara una variable "win" con "=" a "window"
+//LÍNEA 1 a 36
+//En la línea 2 la sentencia var declara una variable "win" con "=" a "window"
 
 var win = window;
 
@@ -270,6 +270,34 @@ var raf = win.requestAnimationFrame
   || win.mozRequestAnimationFrame
   || win.msRequestAnimationFrame
   || function(cb) { return setTimeout(cb, 16); };
+
+var win$1 = window;
+
+var caf = win$1.cancelAnimationFrame
+  || win$1.mozCancelAnimationFrame
+  || function(id){ clearTimeout(id); };
+
+function extend() {
+  var obj, name, copy,
+      target = arguments[0] || {},
+      i = 1,
+      length = arguments.length;
+
+  for (; i < length; i++) {
+    if ((obj = arguments[i]) !== null) {
+      for (name in obj) {
+        copy = obj[name];
+
+        if (target === copy) {
+          continue;
+        } else if (copy !== undefined) {
+          target[name] = copy;
+        }
+      }
+    }
+  }
+  return target;
+}
 
 
 
