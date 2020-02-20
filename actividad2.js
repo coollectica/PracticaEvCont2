@@ -472,15 +472,31 @@ removeClass(slideItems[slideCountNew - i - 1], str);
 
 
  /* 6.4 Fragmento de código donde se modifique la página web (documento HTML) añadiendo una etiqueta (element) */
-// LÍNEA 971-978
-//Se crea una variable div. A esta variable se le asigna un div creado dentro del doc, en la linea 972.
-//(Por lo tanto estamos modificando la pagina web, añadiendo un nuevo elemento div.
+// LÍNEA 328-351
+//Se crea una variable "el". A esta variable se le asigna la creacion de un nuevo elemento con la etiqueta "fakeelement", en la linea 343.
+// https://developer.mozilla.org/es/docs/Web/API/Document/createElement
+  
+function whichProperty(props){
+  if (typeof props === 'string') {
+    var arr = [props],
+        Props = props.charAt(0).toUpperCase() + props.substr(1),
+        prefixes = ['Webkit', 'Moz', 'ms', 'O'];
+        
+    prefixes.forEach(function(prefix) {
+      if (prefix !== 'ms' || props === 'transform') {
+        arr.push(prefix + Props);
+      }
+    });
 
-function getClientWidth (el) {
-var div = doc.createElement('div'), rect, width;
-el.appendChild(div);
-rect = div.getBoundingClientRect();
-width = rect.right - rect.left;
-div.remove();
-return width || getClientWidth(el.parentNode);
+    props = arr;
+  }
+
+  var el = document.createElement('fakeelement'),
+      len = props.length;
+  for(var i = 0; i < props.length; i++){
+    var prop = props[i];
+    if( el.style[prop] !== undefined ){ return prop; }
+  }
+
+  return false; // explicit for ie9-
 }
