@@ -259,9 +259,10 @@ var raf = win.requestAnimationFrame
  if (*!carousel*) { updateOptions(options); }
 
 
-/* Cas 3.5 fragment asignació,
-La funció s'associa a l'esdeveniment a la la línia
-24 amb "=" */
+/* Cas 3.5: Fragment de codi on aparegui l'operació d'assignació.
+L'assignació apareix a la linia 2 on s'assigna el valor "window" a la variable "win"
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Assignment */
+
 var win = window;
 
 
