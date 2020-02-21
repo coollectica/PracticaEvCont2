@@ -75,16 +75,18 @@ https://developer.mozilla.org/en-US/docs/Glossary/Function
     return el.nodeName.toLowerCase();
   }
 
-/*Cas 1.6: Fragment de codi on aparegui la sentència de retorn d'un
-resultat emprant l'operador return.
-Linea 2422 a 2424
-L'element return apareix a la linia 2423
+/*Cas 1.6: Fragment de codi on aparegui la sentència de retorn d'un resultat emprant l'operador return.
+Linea 71 a 76. L'operador return amb la sentencia return, apareixen a la linia 75.
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/return
  */ 
 
- function getLowerCaseNodeName (el) {
-    return el.nodeName.toLowerCase();
-  }
+function getSlideId() {
+  var id = window.tnsId;
+  window.tnsId = !id ? 1 : id + 1;
+  
+  return 'tns' + window.tnsId;
+
+}
 
 /*Cas 1.7: Fragment de codi on aparegui la sentència de captura
 d'errors try acompanyada del bloc catch.
@@ -155,9 +157,10 @@ autoplayUserPaused = false;
 }
 
 /* 2.3 Fragment de codi on aparegui el tipus de dada array.
-Lineas desde 427 a 431. El objeto array aparece en la linea 429 "['touchstart', 'touchmove']"
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-https://classroom.google.com/c/NDAzNzUyNDk0NTRa/m/NjAxNDUzNzAxODRa/details */
+       Lineas desde 427 a 431. 
+       El objeto array aparece en la linea 429 "['touchstart', 'touchmove']"
+       https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+       https://classroom.google.com/c/NDAzNzUyNDk0NTRa/m/NjAxNDUzNzAxODRa/details */
 
 
 function addEvents(el, obj, preventScrolling) {
@@ -165,7 +168,7 @@ for (var prop in obj) {
 var option = ['touchstart', 'touchmove'].indexOf(prop) >= 0 && !preventScrolling ? passiveOption : false;
 el.addEventListener(prop, obj[prop], option);
 }
-
+  
 
 //2.4 Tipo de dato STRING
 //className obtiene y establece el valor del atributo class del elemento especificado
@@ -203,38 +206,23 @@ LEFT: 37,
 RIGHT: 39
 }
   
-// 3.1 Operación suma
-//En este caso (linea 2534) crea una variable "1", cuyo valor es la concatenación de los valores de number y items
-// Linia 2533-2551
+// Cas 3.1: Fragment de codi on aparegui l'operació de suma.
+// Linia 987 a 901 (900)
+//Cuando tem es negativo, devuelve el valor de tem%slideCount más uno (valor numérico, por eso se trata de una suma y no concatenación)
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Aritm%C3%A9ticos
 
-function animateSlide (number, classOut, classIn, isOut) {
-var l = number + items;
-if (!loop) { l = Math.min(l, slideCountNew); }
-
-for (var i = number; i < l; i++) {
-var item = slideItems[i];
-
-// set item positions
-if (!isOut) { item.style.left = (i - index) * 100 / items + '%'; }
-
-if (animateDelay && TRANSITIONDELAY) {
-item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = animateDelay * (i - number) / 1000 + 's';
-}
-removeClass(item, classOut);
-addClass(item, classIn);
-
-if (isOut) { slideItemsOut.push(item); }
-}
-}
+  function getCurrentSlide () {
+    var tem = carousel ? index - cloneCount : index;
+    while (tem < 0) { tem += slideCount; }
+    return tem%slideCount + 1;
+  }
 
 /*Caso 3.2: Fragmento de código donde aparezca la operación de concatenación
 de strings.
 
-Vemos el ejemplo de concatenación de string en la línea 127 a la 128.
-Tenemos la variable vals donde visualizamos las tres concatenaciones "['calc' + str, '-moz-calc' + str, '-webkit-calc' + str],"
-
-En el fragmento de codigo entre las lineas 126 hasta la 138, 
-
+Línea 104-116.
+Tenemos la variable 'vals' donde visualizamos las tres concatenaciones "['calc' + str, '-moz-calc' + str, '-webkit-calc' + str],"
+Se pueden ver dos operandos con un + de operador. Al ser una de ellas un string + actúa como el operador de la concatenación.
 https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/concat
 */
 
@@ -252,10 +240,11 @@ try {
     }
   } catch (e) {}
 
-/* Cas 3.3: fragment lógica OR,
-línies de la 26 a 30.
-La funció s'associa a l'esdeveniment a les línies
-27,28,29 i 30 amb || */
+/*Cas 3.3: Fragment de codi on aparegui l'operació lógica OR,
+Línies de la 26 a 30.
+La operación OR aparece en cada una de las lineas 27 a 30 amb el símbolo "||".
+https://developer.mozilla.org/enUS/docs/Web/JavaScript/Reference/Operators/Logical_Operators
+*/
 
 var raf = win.requestAnimationFrame
 || win.webkitRequestAnimationFrame
@@ -270,16 +259,18 @@ var raf = win.requestAnimationFrame
  if (*!carousel*) { updateOptions(options); }
 
 
-/* Cas 3.5 fragment asignació,
-La funció s'associa a l'esdeveniment a la la línia
-24 amb "=" */
+/* Cas 3.5: Fragment de codi on aparegui l'operació d'assignació.
+L'assignació apareix a la linia 2 on s'assigna el valor "window" a la variable "win"
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Assignment */
+
 var win = window;
 
 
-/* Cas 3.6: fragment autoincrementació,
-línies de la 330 a 336.
-La funció s'associa a l'esdeveniment a la línia
-332 amb ++ */
+/* 3.6: Fragment de codi on aparegui l'operació d'autoincrement.
+   Línies de la 330 a 336.
+En la 332 encontramos el autoincremento, 'i++', el cual incrementa el valor de 'i' cuando 'l' es mayor que 'i'.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Aritm%C3%A9ticos
+ */
 
 function arrayFromNodeList (nl) {
 var arr = [];
@@ -289,17 +280,35 @@ arr.push(nl[i]);
 return arr;
 }
 
-/* Cas 3.7: fragment ternaria,
-línies de la 375 a 386.
-La funció s'associa a l'esdeveniment a la línia
-384 amb ? */
+/* Cas 3.7: Fragment de codi on aparegui l'operació ternaria.
+Línies de la 375 a 397
+Las ternarias usan la sintaxis `condición ? expr1 : expr2 `
+La operación ternaria aparece en la linea 394: donde la si la condición `body.fake` es true se cumple la expresión `resetFakeBody(body, docOverflow)`, de lo contrario se cumple `el.remove()`.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator  */
 
-var doc = document,
-body = getBody(),
-docOverflow = setFakeBody(body),
-el = doc.createElement('p'),
-has3d,
-cssTF = tf.length > 9 ? '-' + tf.slice(0, -9).toLowerCase() + '-' : '';
+function has3DTransforms(tf){
+  if (!tf) { return false; }
+  if (!window.getComputedStyle) { return false; }
+  
+  var doc = document,
+      body = getBody(),
+      docOverflow = setFakeBody(body),
+      el = doc.createElement('p'),
+      has3d,
+      cssTF = tf.length > 9 ? '-' + tf.slice(0, -9).toLowerCase() + '-' : '';
+
+  cssTF += 'transform';
+
+  // Add it to the body to get the computed style
+  body.insertBefore(el, null);
+
+  el.style[tf] = 'translate3d(1px,1px,1px)';
+  has3d = window.getComputedStyle(el).getPropertyValue(cssTF);
+
+  body.fake ? resetFakeBody(body, docOverflow) : el.remove();
+
+  return (has3d !== undefined && has3d.length > 0 && has3d !== "none");
+}
 
 
 /* Cas 3.8: fragment operació "major o igual que"
@@ -325,17 +334,29 @@ function getSlideId() {
   return 'tns' + window.tnsId;
 }
 
-//4.2 Acceso a una posición de un array
-//En este objeto, en la linea 790, accedemos a la posición "touchmove" del array, para asignarle la cualidad descrita al "touchEvents"
-//Linias 788-793
+/* 4.2 Fragmento de código donde aparezca el acceso a una posición de un array.
+LÍNEAS 2325-2337.
+En linea 2329 podemos ver el array "slideItems" y la posición accedida es la 0;  por eso se 
+emplea la sintaxis 'array[posicion]'  quedando "slideItems[0]".
+Podemos ver la documentación de MDN de objeto "array" en estas enlaces:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array      
+https://classroom.google.com/u/0/c/NDAzNzUyNDk0NTRa/m/NjAxNDUzNzAxODRa/details */
 
-touchEvents = {
-'touchstart': onPanStart,
-'touchmove': onPanMove,
-'touchend': onPanEnd,
-'touchcancel': onPanEnd
+function setSlidePositions () {
+  slidePositions = [0];
+  var attr = horizontal ? 'left' : 'top',
+      attr2 = horizontal ? 'right' : 'bottom',
+      base = slideItems[0].getBoundingClientRect()[attr];
+
+  forEach(slideItems, function(item, i) {
+    // skip the first slide
+    if (i) { slidePositions.push(item.getBoundingClientRect()[attr] - base); }
+    // add the end edge
+    if (i === slideCountNew - 1) { slidePositions.push(item.getBoundingClientRect()[attr2] - base); }
+  });
 }
-  
+
+
 //4.3 Acceso a un elemento del DOM
 //Em la linea 220 tenemos un "querySelector", el cual devuelve el primer elemento "head" de Document
 //Lineas 206 a 223
@@ -384,35 +405,42 @@ removeClass(el, 'tns-moving');
 }, 300);
 }
 
-//5.1 Us de Objeto Global del lenguaje
-//En la fila 559, creamos la variable "uid" para asignarle la hora y fecha de hoy según la hora local.
-//Filas 556-583
+/*Caso 5.1: Fragmento de código donde aparezca el uso de un objeto global del
+lenguaje, como por ejemplo Math, Date, Object, Array
+LINEA 556 - 583
+En la línea 559 tenemos la variable "uid" que tiene asignada "new Date" para poder trabajar con fechas y horas.
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date 
+*/
 
 if (localStorageAccess) {
-var browserInfo = navigator.userAgent;
-var uid = new Date;
+    // check browser version and local storage access
+    var browserInfo = navigator.userAgent;
+    var uid = new Date;
 
-try {
-tnsStorage = win.localStorage;
-if (tnsStorage) {
-tnsStorage.setItem(uid, uid);
-localStorageAccess = tnsStorage.getItem(uid) == uid;
-tnsStorage.removeItem(uid);
-} else {
-localStorageAccess = false;
-}
-if (!localStorageAccess) { tnsStorage = {}; }
-} catch(e) {
-localStorageAccess = false;
-}
+    try {
+      tnsStorage = win.localStorage;
+      if (tnsStorage) {
+        tnsStorage.setItem(uid, uid);
+        localStorageAccess = tnsStorage.getItem(uid) == uid;
+        tnsStorage.removeItem(uid);
+      } else {
+        localStorageAccess = false;
+      }
+      if (!localStorageAccess) { tnsStorage = {}; }
+    } catch(e) {
+      localStorageAccess = false;
+    }
 
-if (localStorageAccess) {
-if (tnsStorage['tnsApp'] && tnsStorage['tnsApp'] !== browserInfo) {
-['tC', 'tPL', 'tMQ', 'tTf', 't3D', 'tTDu', 'tTDe', 'tADu', 'tADe', 'tTE', 'tAE'].forEach(function(item) { tnsStorage.removeItem(item); });
-}
-localStorage['tnsApp'] = browserInfo;
-}
-}
+    if (localStorageAccess) {
+      // remove storage when browser version changes
+      if (tnsStorage['tnsApp'] && tnsStorage['tnsApp'] !== browserInfo) {
+        ['tC', 'tPL', 'tMQ', 'tTf', 't3D', 'tTDu', 'tTDe', 'tADu', 'tADe', 'tTE', 'tAE'].forEach(function(item) { tnsStorage.removeItem(item); });
+      }
+      // update browserInfo
+      localStorage['tnsApp'] = browserInfo;
+    }
+  }
 
 //5.2 Uso objeto que representa la pestaña del navegador
 //registra un evento a la ventana del navegador (window). El evento a escuchar es "test".
@@ -428,46 +456,55 @@ window.addEventListener("test", null, opts);
 }
   
 /* 6.1: Fragmento de código donde se modifique la página web (documento
-HTML) cambiando una propiedad de una etiqueta (element) */
+        HTML) cambiando una propiedad de una etiqueta (element) */
+//      LÍNEA 2434-2440
+//      El cambio de la propiedad aparece en la línea 2438 con el la función setAttribute.
+//      https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
 
-// LÍNEA 1475-1477
-//Cambiamos la propiedad de .tns-nav
 
-navContainer = outerWrapper.querySelector('.tns-nav');
-navItems = navContainer.children;
-}
-
+ function disEnableElement (isButton, el, val) {
+    if (isButton) {
+      el.disabled = val;
+    } else {
+      el.setAttribute('aria-disabled', val.toString());
+    }
+  }
 
 /* 6.2: Fragmento de código donde se modifique la página web (document
-HTML) utilitzant un mètode de la propietat d'una etiqueta (element) */
-//LÍNEA 2815-2818
-//Cambiamos las propiedades de la etiqueta "autoplayButton" cambiando su contenido HTML interno utilizando el metodo "innerHtml". Ponemos nuevas propiedades dento de "accion" y "txt"
-function updateAutoplayButton (action, txt) {
-setAttrs(autoplayButton, {'data-action': action});
-autoplayButton.innerHTML = autoplayHtmlStrings[0] + action + autoplayHtmlStrings[1] + txt;
-}
+        HTML) utilitzant un mètode de la propietat d'una etiqueta (element) 
+        LÍNEAS 2063-2074.
+        En la línea 2067 podemos ver un objeto de elemento HTML llamado "container" con una propiedad llamada "ClassName".
+        Se está utilizando un método "replace" para cambiar el valor de la propiedad del objeto "container".
+        He verificado que el creador del código creó este objeto y propiedad al comienzo de este documento de JavaScript.
+        Podemos ver la documentación de MDN de método "replace" en este enlace:
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace */
 
+function disableSlider () {
+  if (disabled) { return; }
 
-/* 6.3 Fragmento de código donde se modifique la página web
-(documento HTML) eliminando una etiqueta (element) */
+  sheet.disabled = true;
+  container.className = container.className.replace(newContainerClasses.substring(1), '');
+  removeAttrs(container, ['style']);
+  if (loop) {
+    for (var j = cloneCount; j--;) {
+      if (carousel) { hideElement(slideItems[j]); }
+      hideElement(slideItems[slideCountNew - j - 1]);
+    }
+  }
 
-// LÍNEA 1906 -1911
-//https://developer.mozilla.org/es/docs/Web/API/Element/removeAttribute
+/* 6.3 Fragmento de código donde se modifique la página web (documento HTML) eliminando una etiqueta (element). 
+       LÍNEAS 16-22. 
+       Se puede ver un ejemplo de eliminación del elemento HTML en la línea 16. 
+       El método 'removeChild' se usa para eliminar el nodo hijo del nodo padre ("parentNode.removeChild").
+       Podemos ver la documentación de MDN que explica usando de metoda "removeChild" en este enlace:
+       https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild */
 
-
-function unfreezeSlider() {
-if (!frozen) { return; }
-
-// Restaura el borde interno para navegadores modernos
-if (edgePadding && CSSMQ) { innerWrapper.style.margin = ''; }
-
-// Eliminar la clase tns-transparent para diapositivas clonadas //
-if (cloneCount) {
-var str = 'tns-transparent';
-for (var i = cloneCount; i--;) {
-if (carousel) { removeClass(slideItems[i], str); }
-removeClass(slideItems[slideCountNew - i - 1], str);
-}
+if(!("remove" in Element.prototype)){
+  Element.prototype.remove = function(){
+    if(this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
 }
 
 
