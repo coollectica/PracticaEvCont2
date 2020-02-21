@@ -508,32 +508,27 @@ if(!("remove" in Element.prototype)){
 }
 
 
- /* 6.4 Fragmento de código donde se modifique la página web (documento HTML) añadiendo una etiqueta (element) */
-// LÍNEA 328-351
-//Se crea una variable "el". A esta variable se le asigna la creacion de un nuevo elemento con la etiqueta "fakeelement", en la linea 343.
-// https://developer.mozilla.org/es/docs/Web/API/Document/createElement
-  
-function whichProperty(props){
-  if (typeof props === 'string') {
-    var arr = [props],
-        Props = props.charAt(0).toUpperCase() + props.substr(1),
-        prefixes = ['Webkit', 'Moz', 'ms', 'O'];
-        
-    prefixes.forEach(function(prefix) {
-      if (prefix !== 'ms' || props === 'transform') {
-        arr.push(prefix + Props);
-      }
-    });
+/*Cas 6.4: Fragment de codi on es modifiqui directament la pàgina
+web (document HTML) afegint una etiqueta (element)
+Des de la línia 184 a la 201. 
+A la línia 198 s'afegeix un element amb l'etiqueta "style" dins de l'etiqueta anomenada "head" */
 
-    props = arr;
-  }
 
-  var el = document.createElement('fakeelement'),
-      len = props.length;
-  for(var i = 0; i < props.length; i++){
-    var prop = props[i];
-    if( el.style[prop] !== undefined ){ return prop; }
-  }
+function createStyleSheet (media) {
+  // Create the <style> tag
+  var style = document.createElement("style");
+  // style.setAttribute("type", "text/css");
 
-  return false; // explicit for ie9-
+  // Add a media (and/or media query) here if you'd like!
+  // style.setAttribute("media", "screen")
+  // style.setAttribute("media", "only screen and (max-width : 1024px)")
+  if (media) { style.setAttribute("media", media); }
+
+  // WebKit hack :(
+  // style.appendChild(document.createTextNode(""));
+
+  // Add the <style> element to the page
+  document.querySelector('head').appendChild(style);
+
+  return style.sheet ? style.sheet : style.styleSheet;
 }
